@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Contact | Book Recommender System</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <style>
+            /* Navbar */
+            .navbar {
+                  border-radius: 0 0 12px 12px;
+                  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar-brand {
+                  font-size: 1.4rem;
+                  color: #fff !important;
+            }
+
+            .nav-link {
+                  font-weight: 500;
+                  color: #fff !important;
+                  margin-left: 15px;
+                  transition: 0.3s;
+            }
+
+            .nav-link:hover {
+                  color: #ffd700 !important;
+            }
+
+            body {
+                  background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+                  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .contact-header {
+                  text-align: center;
+                  padding: 60px 20px 30px;
+            }
+
+            .contact-header h1 {
+                  font-size: 2.3rem;
+                  font-weight: 700;
+                  color: #0077b6;
+            }
+
+            .contact-header p {
+                  font-size: 1.1rem;
+                  color: #555;
+            }
+
+            /* Feedback Form */
+            .feedback-form {
+                  background: #fff;
+                  padding: 30px;
+                  border-radius: 12px;
+                  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+                  margin-bottom: 40px;
+            }
+
+            .feedback-form h3 {
+                  margin-bottom: 20px;
+                  color: #0077b6;
+            }
+
+            .form-control {
+                  border-radius: 8px;
+            }
+
+            .btn-submit {
+                  background-color: #0077b6;
+                  color: #fff;
+                  font-weight: 500;
+                  border-radius: 8px;
+                  padding: 10px 20px;
+                  transition: 0.3s;
+            }
+
+            .btn-submit:hover {
+                  background-color: #005f87;
+            }
+
+            /* Footer */
+            footer {
+                  background: #0d6efd;
+                  color: #fff;
+                  padding: 40px 0 20px;
+                  margin-top: 50px;
+            }
+
+            footer h5 {
+                  font-size: 1.2rem;
+                  margin-bottom: 15px;
+            }
+
+            footer a {
+                  color: #ffd700;
+                  text-decoration: none;
+                  display: block;
+                  margin-bottom: 8px;
+                  transition: color 0.3s ease;
+            }
+
+            footer a:hover {
+                  color: #000;
+                  text-decoration: underline;
+            }
+
+            .footer-bottom {
+                  text-align: center;
+                  padding-top: 15px;
+                  font-size: 0.9rem;
+                  border-top: 1px solid rgba(255, 255, 255, 0.3);
+            }
+      </style>
+</head>
+
+<body>
+
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-info">
+            <div class="container">
+                  <a class="navbar-brand fw-bold" href="#">📚 My Book Recommender</a>
+                  <div>
+                        <ul class="navbar-nav ms-auto">
+                              <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/recommend">Recommendations</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                        </ul>
+                  </div>
+            </div>
+      </nav>
+
+      <!-- Contact Header -->
+      <div class="contact-header">
+            <h1>Get in Touch ✉️</h1>
+            <p>Have questions or feedback? We’d love to hear from you!</p>
+      </div>
+
+      <!-- Feedback Form -->
+      <div class="container">
+            <div class="row justify-content-center">
+                  <div class="col-lg-6 col-md-8">
+                        <div class="feedback-form">
+                              <h3>Feedback Form</h3>
+                              <form action="/submit_feedback" method="POST">
+                                    <div class="mb-3">
+                                          <label for="name" class="form-label">Your Name</label>
+                                          <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                          <label for="email" class="form-label">Your Email</label>
+                                          <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                          <label for="message" class="form-label">Your Feedback</label>
+                                          <textarea class="form-control" id="message" name="message" rows="4"
+                                                required></textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-submit">Submit Feedback</button>
+                              </form>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+      <!-- Footer -->
+      <footer>
+            <div class="container">
+                  <div class="row">
+                        <!-- About -->
+                        <div class="col-md-4">
+                              <h5>📖 About</h5>
+                              <p>My Book Recommender helps you discover top-rated books and find personalized
+                                    suggestions just for you.</p>
+                        </div>
+
+                        <!-- Quick Links -->
+                        <div class="col-md-4">
+                              <h5>🔗 Quick Links</h5>
+                              <a href="/">Home</a>
+                              <a href="/recommend">Recommendations</a>
+                              <a href="/contact">Contact</a>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="col-md-4">
+                              <h5>📞 Contact Us</h5>
+                              <p>Email: falimbadiya01@gmail.com</p>
+                              <p>Phone: +91 9904725947</p>
+                              <p>Location: Ahmedabad, India</p>
+                        </div>
+                  </div>
+            </div>
+
+            <div class="footer-bottom">
+                  <p>© 2025 My Book Recommender. All Rights Reserved.</p>
+            </div>
+      </footer>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>

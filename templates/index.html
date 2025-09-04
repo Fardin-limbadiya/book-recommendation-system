@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Book Recommender System</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <style>
+            body {
+                  background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+                  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                  color: #333;
+            }
+
+            /* Navbar */
+            .navbar {
+                  border-radius: 0 0 12px 12px;
+                  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar-brand {
+                  font-size: 1.4rem;
+                  color: #fff !important;
+            }
+
+            .nav-link {
+                  font-weight: 500;
+                  color: #fff !important;
+                  margin-left: 15px;
+                  transition: 0.3s;
+            }
+
+            .nav-link:hover {
+                  color: #ffd700 !important;
+            }
+
+            /* Welcome Section */
+            .welcome-section h1 {
+                  font-size: 2.5rem;
+                  color: #0077b6;
+            }
+
+            .welcome-section p {
+                  font-size: 1.1rem;
+                  color: #555;
+            }
+
+            /* Section Title */
+            h2 {
+                  text-align: center;
+                  font-weight: 700;
+                  color: #333;
+                  margin-bottom: 40px;
+            }
+
+            /* Book Card */
+            .book-card {
+                  perspective: 1000px;
+                  height: 360px;
+            }
+
+            .book-card-inner {
+                  position: relative;
+                  width: 100%;
+                  height: 100%;
+                  transition: transform 0.6s;
+                  transform-style: preserve-3d;
+                  border-radius: 15px;
+            }
+
+            .book-card:hover .book-card-inner {
+                  transform: rotateY(180deg);
+            }
+
+            .book-card-front,
+            .book-card-back {
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  backface-visibility: hidden;
+                  border-radius: 15px;
+                  overflow: hidden;
+                  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            }
+
+            .book-card-front img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: contain;
+                  background: #fff;
+                  padding: 15px;
+                  border-radius: 15px;
+            }
+
+            .book-card-back {
+                  background: #ffffff;
+                  transform: rotateY(180deg);
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  padding: 20px;
+                  text-align: center;
+                  border: 1px solid #ddd;
+            }
+
+            .book-card-back h5 {
+                  font-size: 1.2rem;
+                  margin-bottom: 8px;
+                  color: #0077b6;
+            }
+
+            .book-card-back p {
+                  font-size: 0.95rem;
+                  margin: 3px 0;
+                  color: #444;
+            }
+
+            /* Hover Lift */
+            .book-card:hover {
+                  transform: scale(1.05);
+                  transition: transform 0.3s ease-in-out;
+            }
+      </style>
+</head>
+
+<body>
+
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-info">
+            <div class="container">
+                  <a class="navbar-brand fw-bold" href="#">📚 My Book Recommender</a>
+                  <div>
+                        <ul class="navbar-nav ms-auto">
+                              <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/recommend">Recommendations</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                        </ul>
+                  </div>
+            </div>
+      </nav>
+
+      <!-- Welcome Section -->
+      <div class="container text-center mt-5 welcome-section">
+            <h1 class="fw-bold">Welcome to Book Recommender System 📚</h1>
+            <p class="text-muted">Discover top-rated books and explore personalized recommendations.</p>
+      </div>
+
+      <!-- Top Books Section -->
+      <div class="container mt-5">
+            <h2>🔥 Top 50 Books</h2>
+            <div class="row g-4">
+                  {% for i in range(book_name|length) %}
+                  <div class="col-md-3 col-sm-6">
+                        <div class="book-card">
+                              <div class="book-card-inner">
+                                    <!-- Front Side (Image) -->
+                                    <div class="book-card-front">
+                                          <img src="{{ image[i] }}" alt="{{ book_name[i] }}" class="book-img">
+                                    </div>
+                                    <!-- Back Side (Details) -->
+                                    <div class="book-card-back">
+                                          <h5>{{ book_name[i] }}</h5>
+                                          <p><strong>Author:</strong> {{ author[i] }}</p>
+                                          <p><strong>Votes:</strong> {{ votes[i] }}</p>
+                                          <p><strong>Rating:</strong> ⭐ {{"%.1f"|format(rating[i])}}</p>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  {% endfor %}
+            </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>
